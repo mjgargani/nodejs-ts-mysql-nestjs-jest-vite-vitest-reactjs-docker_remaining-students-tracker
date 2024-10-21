@@ -3,7 +3,7 @@ services:
     image: mysql:5.7
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: mydb
+      MYSQL_DATABASE: local
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     ports: 
@@ -22,7 +22,7 @@ services:
   #     DB_HOST: db
   #     DB_USER: user
   #     DB_PASSWORD: password
-  #     DB_NAME: mydb
+  #     DB_NAME: local
   # web:
   #   image: node:20-alpine
   #   build: ./app/web
