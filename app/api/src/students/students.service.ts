@@ -21,18 +21,18 @@ export class StudentsService {
     return await this.studentRepository.find();
   }
 
-  async findOne(student_id: number): Promise<Student> {
+  async findOne(std_id: number): Promise<Student> {
     const student = await this.studentRepository.findOne({
-      where: { student_id },
+      where: { std_id },
     });
     return student;
   }
 
-  async update(student_id: number, updateStudentDto: UpdateStudentDto) {
-    return await this.studentRepository.update(student_id, updateStudentDto);
+  async update(std_id: number, updateStudentDto: UpdateStudentDto) {
+    return await this.studentRepository.update(std_id, updateStudentDto);
   }
 
-  async remove(student_id: number) {
-    return await this.studentRepository.delete(student_id);
+  async remove(std_id: number) {
+    return await this.studentRepository.delete(std_id);
   }
 }

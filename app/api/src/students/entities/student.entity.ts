@@ -9,24 +9,30 @@ import {
 @Entity()
 export class Student {
   @PrimaryGeneratedColumn('increment')
-  'student_id': number;
+  'std_id': number;
 
   @Column({ nullable: false })
-  'student_name': string;
+  'std_name': string;
 
   @Column({ nullable: false })
-  'student_email': string;
+  'std_phone_number': string;
 
   @Column({ nullable: false })
-  'student_current_age': number;
+  'std_fst_choice': string;
+
+  @Column({ nullable: false })
+  'std_scd_choice': string;
+
+  @Column({ nullable: false })
+  'std_trd_choice': string;
 
   @CreateDateColumn({
     type: 'timestamp',
   })
-  'student_created_at': Date;
+  'std_created_at': Date;
 
   @UpdateDateColumn({
     type: 'timestamp',
   })
-  'student_updated_at': Date;
+  'std_updated_at': Date;
 }

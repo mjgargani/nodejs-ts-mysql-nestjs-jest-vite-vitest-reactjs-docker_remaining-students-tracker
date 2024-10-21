@@ -1,7 +1,6 @@
 import {
   IsEmail,
   IsNotEmpty,
-  IsNumber,
   IsString,
   MinLength,
 } from 'class-validator';
@@ -10,14 +9,26 @@ export class CreateStudentDto {
   @IsNotEmpty()
   @IsString()
   @MinLength(4)
-  student_name: string;
-
-  @IsEmail()
-  @MinLength(5)
-  student_email: string;
+  std_name: string;
 
   @IsNotEmpty()
-  @IsNumber()
-  @MinLength(13)
-  password: string;
+  @IsEmail()
+  @MinLength(4)
+  std_phone_number: string;
+
+  @IsNotEmpty()
+  @IsString()
+  std_series: string;
+
+  @IsNotEmpty()
+  @IsEmail()
+  std_fst_choice: string;
+
+  @IsNotEmpty()
+  @IsEmail()
+  std_scd_choice: string;
+
+  @IsNotEmpty()
+  @IsEmail()
+  std_trd_choice: string;
 }
