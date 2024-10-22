@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import courses from './courses.json';
 import CourseItem from '../CourseItem';
+
+const randomCourses = courses.sort(() => 0.5 - Math.random());
 
 interface CourseProps {
   selection: string[];
@@ -8,9 +10,7 @@ interface CourseProps {
 }
 
 const Courses: React.FC<CourseProps> = ({ selection, setSelection }) => {
-  // const randomCourses = courses;
-
-  const handleSelection = (name: string) => {
+   const handleSelection = (name: string) => {
     const currentSelection = selection;
     let newSelection = [];
     if(selection.includes(name)){
@@ -21,7 +21,7 @@ const Courses: React.FC<CourseProps> = ({ selection, setSelection }) => {
     setSelection(newSelection)
   }
 
-  return courses.map((course) => {
+  return randomCourses.map((course) => {
     const isSelected = selection.some((name) => name === course.name);
     let choice;
     if(isSelected){
