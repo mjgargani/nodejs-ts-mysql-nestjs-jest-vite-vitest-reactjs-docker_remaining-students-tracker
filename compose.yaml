@@ -26,15 +26,16 @@ services:
       DB_NAME: local
     networks:
       - etec
-  # web:
-  #   image: node:20-alpine
-  #   build: ./app/web
-  #   ports:
-  #     - "8080:8080"
-  #   depends_on:
-  #     - api
-  #   environment:
-  #     API_URL: http://api:3000
+  web:
+    build: ./app/web
+    ports:
+      - "80:80"
+    depends_on:
+      - api
+    environment:
+      API_URL: http://api:3000
+    networks:
+      - etec
 
 networks:
   etec:

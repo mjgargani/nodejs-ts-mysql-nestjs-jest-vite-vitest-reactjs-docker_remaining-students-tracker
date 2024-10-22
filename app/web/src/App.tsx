@@ -3,7 +3,6 @@ import './App.css'
 import Button from './components/Button'
 import Header from './components/Header'
 import LabeledInput from './components/LabeledInput'
-import CourseItem from './components/CourseItem'
 import Courses from './components/Courses'
 
 function App() {
