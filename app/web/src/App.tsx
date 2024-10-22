@@ -2,8 +2,8 @@ import { useState } from 'react'
 import './App.css'
 import Button from './components/Button'
 import Header from './components/Header'
-import Input from './components/Input'
 import LabeledInput from './components/LabeledInput'
+import CourseItem from './components/CourseItem'
 
 function App() {
   const [name, setName] = useState<string>('');
@@ -26,7 +26,7 @@ function App() {
   return (
     <div className='container'>
       <Header />
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <h1>Que bom termos você aqui conosco!<br/>
         Se interessou por alguma área? Deixe seu contato!</h1>
         <div className='container-form-name-phone'>
@@ -36,6 +36,13 @@ function App() {
         <div className='container-form-serie'>
           <LabeledInput disabled={sending} label='Série' value={serie} onChange={(e) => handleSerieChange(e)}/>
         </div>
+        <h1>Escolha até três áreas que te interessaram:</h1>
+        <div className='container-form-courses'>
+          <CourseItem disabled={false} choice={1} name='Desenvolvimento Web' image='https://www3.ft.unicamp.br/sites/default/files/tads.jpg'/>
+          <CourseItem disabled={false} choice={2} name='Desenvolvimento Mobile' image='https://www3.ft.unicamp.br/sites/default/files/tads.jpg'/>
+          <CourseItem disabled={false} choice={3} name='Desenvolvimento de Jogos' image='https://www3.ft.unicamp.br/sites/default/files/tads.jpg'/>
+        </div>
+        <Button disabled={sending} onClick={() => setSending(true)} type='submit'>Enviar!</Button>
       </form>
     </div>
   )

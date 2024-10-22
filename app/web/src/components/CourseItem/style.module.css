@@ -1,0 +1,46 @@
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-basis: 49%;
+  align-items: center;
+  margin: 0;
+  background-color: #001F00;
+  color: #EEFFEE;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+label {
+  margin: 0;
+  padding: 0 8px 0 8px;
+  min-width: 128px;
+  cursor: pointer;
+}
+
+.choice {
+  margin: 0;
+  margin-left: 8px;
+  padding: 0 8px 0 8px;
+  flex-grow: 1;
+  font-weight: bolder;
+  border-radius: 8px;
+  max-width: 16px;
+}
+
+.choice1 {
+  background-color: #584f00;
+}
+
+.choice2 {
+  background-color: #3f3f3f;
+}
+
+.choice3 {
+  background-color: #682400;
+}

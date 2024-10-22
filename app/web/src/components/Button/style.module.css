@@ -1,3 +1,9 @@
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+
 button {
   border-radius: 8px;
   padding: 0.6em 1.2em;

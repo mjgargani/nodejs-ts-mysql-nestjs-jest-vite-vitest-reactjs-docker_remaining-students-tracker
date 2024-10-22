@@ -35,6 +35,15 @@ form>.container-form-serie {
   width: 100%;
 }
 
+form>.container-form-courses {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  flex-grow: 1;
+  width: 100%;
+}
+
 h1 {
   text-align: center;
   font-size: x-large;
