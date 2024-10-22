@@ -1,0 +1,14 @@
+input {
+  flex: auto;
+  color: #000300;
+  background-color: #EEFFEE;
+  border: none;
+  border-radius: 8px;
+  min-height: 32px;
+  padding-left: 8px;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #00FF00;
+}

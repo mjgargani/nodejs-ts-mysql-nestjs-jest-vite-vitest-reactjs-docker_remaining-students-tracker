@@ -1,0 +1,22 @@
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  align-items: center;
+  margin: 0;
+  background-color: #001F00;
+  color: #EEFFEE;
+  border-radius: 8px;
+}
+
+label {
+  margin: 0;
+  padding: 0 8px 0 8px;
+  min-width: 128px;
+}

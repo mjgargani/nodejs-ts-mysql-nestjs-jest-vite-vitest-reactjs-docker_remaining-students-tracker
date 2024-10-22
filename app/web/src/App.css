@@ -4,8 +4,39 @@
 }
 
 .container {
-  background-color: brown;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin: 0 auto;
+  padding: 0;
+  width: 80%;
+}
+
+form>.container-form-name-phone {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  flex-grow: 1;
+  width: 100%;
+}
+
+form>.container-form-serie {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  flex-grow: 1;
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+  font-size: x-large;
+  font-weight: normal;
 }
