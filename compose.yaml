@@ -7,22 +7,25 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: password
     ports: 
-      - 3306:3306
+      - "3306:3306"
     volumes:
       - /var/lib/mysql:/var/lib/mysql
       - ./app/db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
-  # api:
-  #   image: node:20-alpine
-  #   build: ./app/api
-  #   ports:
-  #     - "3000:3000"
-  #   depends_on:
-  #     - db
-  #   environment:
-  #     DB_HOST: db
-  #     DB_USER: user
-  #     DB_PASSWORD: password
-  #     DB_NAME: local
+    networks:
+      - etec
+  api:
+    build: ./app/api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: local
+    networks:
+      - etec
   # web:
   #   image: node:20-alpine
   #   build: ./app/web
@@ -32,3 +35,7 @@ services:
   #     - api
   #   environment:
   #     API_URL: http://api:3000
+
+networks:
+  etec:
+    driver: bridge
