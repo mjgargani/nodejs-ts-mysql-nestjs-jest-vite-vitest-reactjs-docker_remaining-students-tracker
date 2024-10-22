@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './style.module.css'
 
 interface CourseItemProps {
+  handleSelection: (name: string) => void;
   selected?: boolean;
   disabled?: boolean;
-  choice?: 1 | 2 | 3;
+  choice?: number;
   name: string;
   image: string;
 }
 
-const CourseItem: React.FC<CourseItemProps> = ({ selected = false, disabled = false, choice, name, image }) => {
-  return (<div className={`${styles.container} ${(disabled ? styles.disabled : '')}`}> 
-            <div className={`${styles.choice} ${selected ? styles[`choice${choice}`] : ''}`}>{choice}º</div>
+const CourseItem: React.FC<CourseItemProps> = ({ selected = false, disabled = false, choice, name, image, handleSelection }) => {
+  const [isSelected, setIsSelect] = useState<boolean>(selected);
+  return (<div 
+      className={`${styles.container} ${(disabled ? styles.disabled : '')}`} 
+      onClick={() => {
+        setIsSelect(!isSelected);
+        handleSelection(name);
+      }} 
+      data-selected={isSelected}
+    > 
+            <div className={`${styles.choice} ${isSelected ? styles[`choice${choice}`] : ''}`}>{choice}º</div>
             <label>{name}</label>
             <div style={{
               backgroundImage: `url(${image})`,

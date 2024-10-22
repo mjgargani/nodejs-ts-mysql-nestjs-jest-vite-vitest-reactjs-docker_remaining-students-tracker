@@ -18,6 +18,12 @@ export class Student {
   'std_phone_number': string;
 
   @Column({ nullable: false })
+  'std_series': string; 
+  
+  @Column({ nullable: false })
+  'std_nps': number;  
+
+  @Column({ nullable: false })
   'std_fst_choice': string;
 
   @Column({ nullable: false })

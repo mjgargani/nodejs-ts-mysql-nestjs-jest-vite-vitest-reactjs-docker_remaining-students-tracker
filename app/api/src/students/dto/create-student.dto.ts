@@ -1,6 +1,7 @@
 import {
   IsEmail,
   IsNotEmpty,
+  IsNumber,
   IsString,
   MinLength,
 } from 'class-validator';
@@ -19,7 +20,11 @@ export class CreateStudentDto {
   @IsNotEmpty()
   @IsString()
   std_series: string;
-
+  
+  @IsNotEmpty()
+  @IsNumber()
+  std_nps: number;
+  
   @IsNotEmpty()
   @IsEmail()
   std_fst_choice: string;
