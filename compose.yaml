@@ -26,16 +26,16 @@ services:
       DB_NAME: local
     networks:
       - etec
-  web:
-    build: ./app/web
-    ports:
-      - "80:80"
-    depends_on:
-      - api
-    environment:
-      API_URL: http://api:3000
-    networks:
-      - etec
+  # web:
+  #   build: ./app/web
+  #   ports:
+  #     - "80:80"
+  #   depends_on:
+  #     - api
+  #   environment:
+  #     API_URL: http://api:3000
+  #   networks:
+  #     - etec
 
 networks:
   etec:

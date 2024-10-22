@@ -4,12 +4,15 @@ import Button from './components/Button'
 import Header from './components/Header'
 import LabeledInput from './components/LabeledInput'
 import Courses from './components/Courses'
+import { get } from './utils/fetch'
 
 function App() {
   const [name, setName] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [serie, setSerie] = useState<string>('');
   const [sending, setSending] = useState<boolean>(false);
+
+  get().then((res) => console.log(res));
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
