@@ -1,12 +1,13 @@
 import './App.css'
 import Button from './components/Button'
+import Header from './components/Header'
 
 function App() {
 
   return (
-    <>
-    <Button title="Click me" onClick={() => console.log('Button clicked')} />
-    </>
+    <div className='container'>
+      <Header />
+    </div>
   )
 }
 

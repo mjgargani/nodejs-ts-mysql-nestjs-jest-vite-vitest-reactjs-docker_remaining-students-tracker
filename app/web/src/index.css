@@ -15,13 +15,7 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center;
-  min-width: 320px;
+  flex-direction: column;
   min-height: 100vh;
   background-image: linear-gradient(#014F00, #013400);
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
 }
