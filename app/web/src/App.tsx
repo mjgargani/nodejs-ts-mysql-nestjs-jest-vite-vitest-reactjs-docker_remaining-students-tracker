@@ -39,7 +39,7 @@ function App() {
         </div>
         <h1>Escolha até três áreas que te interessaram:</h1>
         <div className='container-form-courses'>
-          <Courses />
+          <Courses selection={[]}/>
         </div>
         <Button disabled={sending} onClick={() => setSending(true)} type='submit'>Enviar!</Button>
       </form>
