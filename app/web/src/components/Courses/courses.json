@@ -1,0 +1,11 @@
+[
+  {"id": 0, "name":"DESIGN GRÁFICO (M-TEC-N)", "bg": "./courses/0.jpg" },
+  {"id": 1, "name":"FARMÁCIA (M-TEC-N)", "bg": "./courses/1.jpg" },
+  {"id": 2, "name":"NUTRIÇÃO E DIETÉTICA (M-TEC)", "bg": "./courses/2.jpg" },
+  {"id": 3, "name":"MEIO AMBIENTE (M-TEC-AMS)", "bg": "./courses/3.jpg" },
+  {"id": 4, "name":"ADMINISTRAÇÃO (M-TEC)", "bg": "./courses/4.jpg" },
+  {"id": 5, "name":"AGRONEGÓCIO (M-TEC)", "bg": "./courses/5.jpg" },
+  {"id": 6, "name":"AGROPECUÁRIA (M-TEC)", "bg": "./courses/6.jpg" },
+  {"id": 7, "name":"QUÍMICA (M-TEC)", "bg": "./courses/7.jpg" },
+  {"id": 8, "name":"DESENV. DE SISTEMAS (M-TEC-AMS)", "bg": "./courses/8.jpg" }
+]

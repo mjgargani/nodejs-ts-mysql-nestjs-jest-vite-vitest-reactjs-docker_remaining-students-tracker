@@ -4,6 +4,7 @@ import Button from './components/Button'
 import Header from './components/Header'
 import LabeledInput from './components/LabeledInput'
 import CourseItem from './components/CourseItem'
+import Courses from './components/Courses'
 
 function App() {
   const [name, setName] = useState<string>('');
@@ -38,9 +39,7 @@ function App() {
         </div>
         <h1>Escolha até três áreas que te interessaram:</h1>
         <div className='container-form-courses'>
-          <CourseItem disabled={false} choice={1} name='Desenvolvimento Web' image='https://www3.ft.unicamp.br/sites/default/files/tads.jpg'/>
-          <CourseItem disabled={false} choice={2} name='Desenvolvimento Mobile' image='https://www3.ft.unicamp.br/sites/default/files/tads.jpg'/>
-          <CourseItem disabled={false} choice={3} name='Desenvolvimento de Jogos' image='https://www3.ft.unicamp.br/sites/default/files/tads.jpg'/>
+          <Courses />
         </div>
         <Button disabled={sending} onClick={() => setSending(true)} type='submit'>Enviar!</Button>
       </form>
