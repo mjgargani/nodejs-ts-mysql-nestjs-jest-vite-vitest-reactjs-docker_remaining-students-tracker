@@ -4,6 +4,10 @@
   pointer-events: none;
 }
 
+.focus {
+  background-color: #dd7348 !important;
+}
+
 button {
   border-radius: 8px;
   padding: 0.6em 1.2em;

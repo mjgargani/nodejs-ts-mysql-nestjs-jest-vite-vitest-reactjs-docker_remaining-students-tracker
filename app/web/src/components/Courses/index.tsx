@@ -10,7 +10,7 @@ interface CourseProps {
 }
 
 const Courses: React.FC<CourseProps> = ({ selection, setSelection }) => {
-   const handleSelection = (name: string) => {
+  const handleSelection = (name: string) => {
     const currentSelection = selection;
     let newSelection = [];
     if(selection.includes(name)){

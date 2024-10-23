@@ -5,29 +5,33 @@ import Header from './components/Header'
 import LabeledInput from './components/LabeledInput'
 import Courses from './components/Courses'
 import { post } from './utils/fetch'
+import Nps from './components/Nps'
 
 function App() {
   const [name, setName] = useState<string>('');
   const [phone, setPhone] = useState<string>('');
   const [serie, setSerie] = useState<string>('');
   const [selection, setSelection] = useState<string[]>([]);
+  const [nps, setNps] = useState<number>(-1);
   const [sending, setSending] = useState<boolean>(false);
 
   const handleSending = async () => {
     setSending(true);
     await post({
-      "std_name": name,
-      "std_phone_number": phone,
-      "std_series": serie,
-      "std_nps": 2,
-      "std_fst_choice": "1",
-      "std_scd_choice": "2",
-      "std_trd_choice": "3",
+      "std_name": name || "----",
+      "std_phone_number": phone || "(00) 0000-0000",
+      "std_series": serie || "----",
+      "std_nps": nps,
+      "std_fst_choice": selection[0] || "----",
+      "std_scd_choice": selection[1] || "----",
+      "std_trd_choice": selection[2] || "----",
     });
     setSending(false);
     setName("");
     setPhone("");
     setSerie("");
+    setNps(0);
+    setSelection([]);
   }
 
   const handleNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,6 +73,8 @@ function App() {
           <LabeledInput disabled={sending} label='Telefone' value={phone} onChange={(e) => handlePhoneChange(e)}/>
           <LabeledInput disabled={sending} label='Série' value={serie} onChange={(e) => handleSerieChange(e)}/>
         </div>
+        <h1>Como você avalia sua experiência no evento?</h1>
+        <Nps nps={nps} setNps={setNps} />
         <h1>Escolha até três áreas que te interessaram:</h1>
         <div className='container-form-courses'>
           <Courses selection={selection} setSelection={setSelection} />
