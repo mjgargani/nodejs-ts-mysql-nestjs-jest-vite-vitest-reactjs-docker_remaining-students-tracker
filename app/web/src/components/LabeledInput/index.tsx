@@ -7,11 +7,13 @@ interface LabeledInputProps {
   label: string;
   value?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  required?: boolean;
+  maxLength?: number;
 }
-const LabeledInput: React.FC<LabeledInputProps> = ({ disabled = false, label, value, onChange  }) => {
+const LabeledInput: React.FC<LabeledInputProps> = ({ disabled = false, label, value, onChange, required = false, maxLength }) => {
   return (<div className={`${style.container} ${(disabled ? style.disabled : '')}`}>
     <label>{label}</label>
-    <Input value={value} onChange={onChange} />
+    <Input value={value} onChange={onChange} required={required} maxLength={maxLength} />
   </div>);
 }
 
