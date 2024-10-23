@@ -3,6 +3,9 @@ import { CreateStudentDto } from './dto/create-student.dto';
 import { UpdateStudentDto } from './dto/update-student.dto';
 import { Student } from './entities/student.entity';
 import { Repository } from 'typeorm';
+import { json2csv } from 'json-2-csv';
+import { writeFile } from 'fs/promises';
+import { join } from 'path';
 
 @Injectable()
 export class StudentsService {
@@ -14,6 +17,9 @@ export class StudentsService {
   async create(createStudentDto: CreateStudentDto) {
     const newStudent = this.studentRepository.create(createStudentDto);
     await this.studentRepository.save(newStudent);
+    const getReport = await this.studentRepository.find();
+    const csv = await json2csv(getReport);
+    await writeFile(join(__dirname,'..', '..', 'report','students-report.csv'), csv);
     return newStudent;
   }
 

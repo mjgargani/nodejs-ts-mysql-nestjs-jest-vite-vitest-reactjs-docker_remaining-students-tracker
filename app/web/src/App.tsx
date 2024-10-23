@@ -33,12 +33,8 @@ function App() {
         "std_scd_choice": selection[1] || "----",
         "std_trd_choice": selection[2] || "----",
       });
-      setSending(false);
-      setName("");
-      setPhone("");
-      setSerie("");
-      setNps(0);
-      setSelection([]);
+      alert(`Obrigado por sua avaliação, ${name.split(' ')[0]}!`);
+      window.location.reload();
     }
   }
 
