@@ -9,11 +9,11 @@ export class DatabaseProvider {
   public createDataSource() {
     return new DataSource({
       type: 'mysql',
-      host: this.configService.get<string>('DB_HOST') || 'localhost',
-      port: 3306,
-      username: this.configService.get<string>('DB_USER') || 'root',
-      password: this.configService.get<string>('DB_PASSWORD') || 'root',
-      database: this.configService.get<string>('DB_NAME') || 'local',
+      host: this.configService.get<string>('MYSQL_HOST') || 'localhost',
+      port: this.configService.get<number>('MYSQL_PORT') || 3306,
+      username: this.configService.get<string>('MYSQL_USER'),
+      password: this.configService.get<string>('MYSQL_PASSWORD'),
+      database: this.configService.get<string>('MYSQL_DATABASE'),
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
       synchronize: true,
     }).initialize();
