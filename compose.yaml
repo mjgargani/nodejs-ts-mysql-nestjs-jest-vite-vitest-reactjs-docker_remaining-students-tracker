@@ -2,42 +2,36 @@ services:
   db:
     image: mysql:5.7
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: local
-      MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      env_file: ".env"
     ports: 
-      - 3306:3306
+      - "${DB_PORT}:3306"
     volumes:
       - /var/lib/mysql:/var/lib/mysql
       - ./app/db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
     networks:
       - etec
-  api:
-    build: ./app/api
-    ports:
-      - 3000:3000
-    depends_on:
-      - db
-    environment:
-      DB_HOST: db
-      DB_USER: root
-      DB_PASSWORD: root
-      DB_NAME: local
-    volumes:
-      - ./report:/usr/src/app/report
-    networks:
-      - etec
-  web:
-    build: ./app/web
-    ports:
-      - 80:80
-    depends_on:
-      - api
-    environment:
-      VITE_API_URL: http://192.168.2.105:3000
-    networks:
-      - etec
+  # api:
+  #   build: ./app/api
+  #   ports:
+  #     - "${API_PORT}:3000"
+  #   depends_on:
+  #     - db
+  #   environment:
+  #     env_file: ".env"
+  #   volumes:
+  #     - ./report:/usr/src/app/report
+  #   networks:
+  #     - etec
+  # web:
+  #   build: ./app/web
+  #   ports:
+  #     - 80:80
+  #   depends_on:
+  #     - api
+  #   environment:
+  #     env_file: ".env"
+  #   networks:
+  #     - etec
 
 networks:
   etec:
