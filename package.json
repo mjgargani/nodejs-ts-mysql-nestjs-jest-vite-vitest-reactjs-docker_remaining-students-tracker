@@ -1,15 +1,21 @@
 {
   "name": "nodejs-ts-mysql-nestjs-jest-vite-vitest-reactjs-docker_remaining-students-tracker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Tracking of remaining students",
   "main": "index.js",
   "scripts": {
     "dev": "node --experimental-strip-types index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migration:create": "typeorm migration:create -o ./migrations/PostRefactoring",
+    "migration:run": "typeorm migration:run -d ./data-source.js",
+    "migration:revert": "typeorm migration:revert -d ./data-source.js"
   },
   "author": "Rodrigo G. Oliveira",
   "license": "MIT",
   "devDependencies": {
-    "puppeteer": "^23.6.0"
+    "dotenv": "^16.4.5",
+    "mysql": "^2.18.1",
+    "puppeteer": "^23.6.0",
+    "typeorm": "^0.3.20"
   }
 }
