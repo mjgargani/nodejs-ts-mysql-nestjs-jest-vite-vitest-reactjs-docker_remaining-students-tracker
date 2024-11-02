@@ -1,26 +1,28 @@
 services:
   db:
-    image: mysql:5.7
+    image: mariadb:lts
+    env_file: ".env"
     environment:
-      MYSQL_TCP_PORT: ${MYSQL_PORT}
-      env_file: ".env"
+      MYSQL_TCP_PORT: ${MARIADB_PORT}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
     ports: 
-      - "${MYSQL_PORT}:${MYSQL_PORT}"
+      - "${MARIADB_PORT}:${MARIADB_PORT}"
     volumes:
       - /var/lib/mysql:/var/lib/mysql
-      - ./app/db/schema.sql:/docker-entrypoint-initdb.d/schema.sql
     networks:
       - etec
   # api:
+  #   environment:
+  #     env_file: ".env"
   #   build:
   #     context: ./app/api
   #     args:
-  #       MYSQL_HOST: ${MYSQL_HOST}
-  #       MYSQL_PORT: ${MYSQL_PORT}
-  #       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-  #       MYSQL_USER: ${MYSQL_USER}
-  #       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-  #       MYSQL_DATABASE: ${MYSQL_DATABASE}
+  #       MARIADB_HOST: ${MARIADB_HOST}
+  #       MARIADB_PORT: ${MARIADB_PORT}
+  #       MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+  #       MARIADB_USER: ${MARIADB_USER}
+  #       MARIADB_PASSWORD: ${MARIADB_PASSWORD}
+  #       MARIADB_DATABASE: ${MARIADB_DATABASE}
   #   ports:
   #     - "${API_PORT}:3000"
   #   depends_on:
@@ -30,6 +32,8 @@ services:
   #   networks:
   #     - etec
   # web:
+  #   environment:
+  #     env_file: ".env"
   #   build: 
   #     context: ./app/web
   #     args:
@@ -39,8 +43,6 @@ services:
   #     - 80:80
   #   depends_on:
   #     - api
-  #   environment:
-  #     env_file: ".env"
   #   networks:
   #     - etec
 

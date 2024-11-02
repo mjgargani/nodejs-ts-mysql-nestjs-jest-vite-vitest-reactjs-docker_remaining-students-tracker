@@ -4,18 +4,22 @@
   "description": "Tracking of remaining students",
   "main": "index.js",
   "scripts": {
-    "dev": "node --experimental-strip-types index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "migration:create": "typeorm migration:create -o ./migrations/PostRefactoring",
-    "migration:run": "typeorm migration:run -d ./data-source.js",
-    "migration:revert": "typeorm migration:revert -d ./data-source.js"
+    "compose:up:build": "docker compose up --build",
+    "compose:up": "docker compose up",
+    "compose:down:rmop": "docker compose down --remove-orphans",
+    "compose:down": "docker compose down",
+    "build": "MARIADB_DATABASE=production npm run compose:up:build",
+    "start": "MARIADB_DATABASE=production npm run compose:up",
+    "build:dev": "MARIADB_DATABASE=development npm run compose:up:build",
+    "start:dev": "MARIADB_DATABASE=development npm run compose:up",
+    "stop": "npm run compose:down",
+    "stop:rm": "npm run compose:down:rmop"
   },
   "author": "Rodrigo G. Oliveira",
   "license": "MIT",
   "devDependencies": {
     "dotenv": "^16.4.5",
-    "mysql": "^2.18.1",
-    "puppeteer": "^23.6.0",
-    "typeorm": "^0.3.20"
+    "puppeteer": "^23.6.0"
   }
 }

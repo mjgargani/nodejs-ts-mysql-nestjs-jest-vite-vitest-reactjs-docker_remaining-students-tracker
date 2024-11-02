@@ -1,4 +1,4 @@
-import { DataSource } from 'typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 import { Injectable } from '@nestjs/common';
 
@@ -7,25 +7,31 @@ export class DatabaseProvider {
   constructor(private configService: ConfigService) {}
 
   public createDataSource() {
-    return new DataSource({
+    const config: DataSourceOptions = {
       type: 'mysql',
-      host: this.configService.get<string>('MYSQL_HOST') || 'localhost',
-      port: this.configService.get<number>('MYSQL_PORT') || 3306,
-      username: this.configService.get<string>('MYSQL_USER'),
-      password: this.configService.get<string>('MYSQL_PASSWORD'),
-      database: this.configService.get<string>('MYSQL_DATABASE'),
+      host: this.configService.get<string>('MARIADB_HOST') || 'localhost',
+      port: this.configService.get<number>('MARIADB_PORT') || 3306,
+      username: this.configService.get<string>('MARIADB_USER') || 'user',
+      password: this.configService.get<string>('MARIADB_PASSWORD') || 'password',
+      database: this.configService.get<string>('MARIADB_DATABASE'),
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
+      migrations: [__dirname + '/migrations/*{.ts,.js}'],
       synchronize: true,
-    }).initialize();
+    };
+    const dataSource = new DataSource(config);
+    return dataSource;
   }
 }
+
+const configService = new ConfigService();
+const databaseProvider = new DatabaseProvider(configService);
+export const dataSource = databaseProvider.createDataSource();
 
 export const databaseProviders = [
   {
     provide: 'DATA_SOURCE',
-    useFactory: async (configService: ConfigService) => {
-      const databaseProvider = new DatabaseProvider(configService);
-      return databaseProvider.createDataSource();
+    useFactory: async () => {
+      return dataSource.initialize();
     },
     inject: [ConfigService],
   },
