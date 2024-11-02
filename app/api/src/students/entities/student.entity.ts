@@ -8,8 +8,8 @@ import {
 
 @Entity()
 export class Student {
-  @PrimaryGeneratedColumn('increment')
-  'std_id': number;
+  @PrimaryGeneratedColumn('uuid')
+  'std_id': string;
 
   @Column({ nullable: false })
   'std_name': string;

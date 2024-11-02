@@ -1,6 +1,6 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { Injectable } from '@nestjs/common';
-import environmentProvider from 'src/utils/environment.provider';
+import environmentProvider from 'src/_utils_/environment.provider';
 
 @Injectable()
 export class DatabaseProvider {
