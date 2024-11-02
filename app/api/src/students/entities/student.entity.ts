@@ -1,36 +1,27 @@
+import { Course } from 'src/courses/entities/course.entity';
+import { Phone } from 'src/phones/entities/phone.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
 export class Student {
-  @PrimaryGeneratedColumn('increment')
-  'std_id': number;
+  @PrimaryGeneratedColumn('uuid')
+  'std_id': string;
 
   @Column({ nullable: false })
   'std_name': string;
-
-  @Column({ nullable: false })
-  'std_phone_number': string;
 
   @Column({ nullable: false })
   'std_series': string; 
   
   @Column({ nullable: false })
   'std_nps': number;  
-
-  @Column({ nullable: false })
-  'std_fst_choice': string;
-
-  @Column({ nullable: false })
-  'std_scd_choice': string;
-
-  @Column({ nullable: false })
-  'std_trd_choice': string;
 
   @CreateDateColumn({
     type: 'timestamp',
@@ -41,4 +32,10 @@ export class Student {
     type: 'timestamp',
   })
   'std_updated_at': Date;
+
+  @OneToMany(() => Phone, phone => phone.student, { cascade: true, onDelete: 'CASCADE' })
+  phones: Phone[];
+
+  @OneToMany(() => Course, course => course.student, { cascade: true, onDelete: 'CASCADE' })
+  courses: Course[];
 }
