@@ -8,12 +8,13 @@ export class DatabaseProvider {
 
   public createDataSource() {
     const config: DataSourceOptions = {
-      type: 'mysql',
+      type: 'postgres',
       host: environmentProvider.getDbHost(),
       port: environmentProvider.getDbPort(),
       username: environmentProvider.getDbUser(),
       password: environmentProvider.getDbPassword(),
-      database: environmentProvider.getDbDatabase(),
+      database: environmentProvider.getDbName(),
+      schema: environmentProvider.getDbSchema(),
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
       migrations: [__dirname + '/migrations/*{.ts,.js}'],
       synchronize: true,
