@@ -3,7 +3,6 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -27,7 +26,6 @@ export class Course {
   })
   'crs_updated_at': Date;
 
-  @ManyToOne(() => Student, student => student.std_id)
-  @JoinColumn({ name: 'std_id' })
-  std_id: Student;
+  @ManyToOne(() => Student, student => student.courses)
+  student: Student;
 }

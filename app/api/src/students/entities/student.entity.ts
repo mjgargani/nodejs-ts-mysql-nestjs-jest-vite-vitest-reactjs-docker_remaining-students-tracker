@@ -1,7 +1,10 @@
+import { Course } from 'src/courses/entities/course.entity';
+import { Phone } from 'src/phones/entities/phone.entity';
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -29,4 +32,10 @@ export class Student {
     type: 'timestamp',
   })
   'std_updated_at': Date;
+
+  @OneToMany(() => Phone, phone => phone.student, { cascade: true, onDelete: 'CASCADE' })
+  phones: Phone[];
+
+  @OneToMany(() => Course, course => course.student, { cascade: true, onDelete: 'CASCADE' })
+  courses: Course[];
 }

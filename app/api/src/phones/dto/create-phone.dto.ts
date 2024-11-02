@@ -12,6 +12,6 @@ export class CreatePhoneDto {
   phn_number: string;
 
   @IsNotEmpty()
-  @IsNumber()
-  std_id: number;
+  @IsString()
+  std_id: string;
 }

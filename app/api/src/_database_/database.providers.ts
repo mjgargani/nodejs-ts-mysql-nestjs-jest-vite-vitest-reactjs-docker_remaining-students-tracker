@@ -1,6 +1,7 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 import environmentProvider from 'src/_utils_/environment.provider';
+import path from 'path';
 
 @Injectable()
 export class DatabaseProvider {
@@ -15,8 +16,8 @@ export class DatabaseProvider {
       password: environmentProvider.getDbPassword(),
       database: environmentProvider.getDbName(),
       schema: environmentProvider.getDbSchema(),
-      entities: [__dirname + '/../**/*.entity{.ts,.js}'],
-      migrations: [__dirname + '/migrations/*{.ts,.js}'],
+      entities: [path.join(__dirname, '..', '**', '*.entity{.ts,.js}')],
+      migrations: [path.join(__dirname, '..', '_migrations_', environmentProvider.getDbSchema(), '*{.ts,.js}')],
       synchronize: true,
     };
     const dataSource = new DataSource(config);

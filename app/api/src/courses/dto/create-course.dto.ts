@@ -9,9 +9,9 @@ export class CreateCourseDto {
   @IsNotEmpty()
   @IsString()
   @MinLength(4)
-  phn_number: string;
+  crs_name: string;
 
   @IsNotEmpty()
-  @IsNumber()
-  std_id: number;
+  @IsString()
+  std_id: string;
 }

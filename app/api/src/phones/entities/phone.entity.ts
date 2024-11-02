@@ -27,7 +27,6 @@ export class Phone {
   })
   'phn_updated_at': Date;
 
-  @ManyToOne(() => Student, student => student.std_id)
-  @JoinColumn({ name: 'std_id' })
-  std_id: Student;
+  @ManyToOne(() => Student, student => student.phones)
+  student: Student;
 }
