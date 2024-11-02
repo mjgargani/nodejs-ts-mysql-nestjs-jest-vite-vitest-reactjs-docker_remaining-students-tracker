@@ -5,16 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "compose:up:build": "docker compose up --build",
-    "compose:up": "docker compose up",
-    "compose:down:rmop": "docker compose down --remove-orphans",
-    "compose:down": "docker compose down",
-    "build": "MARIADB_DATABASE=production npm run compose:up:build",
-    "start": "MARIADB_DATABASE=production npm run compose:up",
-    "build:dev": "MARIADB_DATABASE=development npm run compose:up:build",
-    "start:dev": "MARIADB_DATABASE=development npm run compose:up",
-    "stop": "npm run compose:down",
-    "stop:rm": "npm run compose:down:rmop"
+    "c:up": "docker compose up",
+    "c:down": "docker compose down"
   },
   "author": "Rodrigo G. Oliveira",
   "license": "MIT",

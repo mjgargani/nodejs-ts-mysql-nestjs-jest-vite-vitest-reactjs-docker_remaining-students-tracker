@@ -15,19 +15,19 @@ class Environment {
   constructor(private provider: EnvironmentProvider) {}
 
   public getDbHost() {
-    return this.provider.get('MARIADB_HOST', 'localhost') as string;
+    return this.provider.get('PGHOST', 'localhost') as string;
   }
 
   public getDbPort() {
-    return this.provider.get('MARIADB_PORT', 3306) as number;
+    return this.provider.get('PGPORT', 5432) as number;
   }
 
   public getDbUser() {
-    return this.provider.get('MARIADB_USER', 'user') as string;
+    return this.provider.get('PGUSER', 'user') as string;
   }
 
   public getDbPassword() {
-    return this.provider.get('MARIADB_PASSWORD', 'password') as string;
+    return this.provider.get('PGPASSWORD', 'password') as string;
   }
 
   public getDbDatabase() {

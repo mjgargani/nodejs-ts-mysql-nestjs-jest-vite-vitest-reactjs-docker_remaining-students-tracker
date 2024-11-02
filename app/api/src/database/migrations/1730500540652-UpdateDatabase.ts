@@ -1,6 +1,6 @@
 import { MigrationInterface, QueryRunner } from "typeorm";
 
-const schema = process.env.MARIADB_DATABASE;
+const schema = process.env.POSTGRES_DATABASE;
 
 export class UpdateDatabase1730500540652 implements MigrationInterface {
 
