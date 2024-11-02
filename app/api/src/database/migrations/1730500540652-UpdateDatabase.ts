@@ -45,7 +45,7 @@ export class UpdateDatabase1730500540652 implements MigrationInterface {
     await queryRunner.query(`SET search_path TO ${schema};`);
     
     for (const table of ['student', 'phone', 'course']) {
-      await queryRunner.query(`DROP TABLE IF EXISTS ${table};`);
+      await queryRunner.query(`DROP TABLE IF EXISTS ${table} CASCADE;`);
     }
   }
 }
