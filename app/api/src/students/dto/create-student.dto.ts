@@ -1,10 +1,18 @@
+import { Type } from 'class-transformer';
 import {
-  IsEmail,
+  ArrayMinSize,
+  IsArray,
   IsNotEmpty,
   IsNumber,
   IsString,
+  MaxLength,
   MinLength,
+  ValidateNested,
 } from 'class-validator';
+import { CreateCourseDto } from 'src/courses/dto/create-course.dto';
+import { Course } from 'src/courses/entities/course.entity';
+import { CreatePhoneDto } from 'src/phones/dto/create-phone.dto';
+import { Phone } from 'src/phones/entities/phone.entity';
 
 export class CreateStudentDto {
   @IsNotEmpty()
@@ -13,27 +21,27 @@ export class CreateStudentDto {
   std_name: string;
 
   @IsNotEmpty()
-  @IsEmail()
-  @MinLength(4)
-  std_phone_number: string;
-
-  @IsNotEmpty()
   @IsString()
+  @MinLength(4)
   std_series: string;
   
   @IsNotEmpty()
   @IsNumber()
+  @MinLength(1)
+  @MaxLength(5)
   std_nps: number;
-  
-  @IsNotEmpty()
-  @IsEmail()
-  std_fst_choice: string;
 
   @IsNotEmpty()
-  @IsEmail()
-  std_scd_choice: string;
+  @IsArray()
+  @ArrayMinSize(1)
+  @ValidateNested({ each: true })
+  @Type(() => CreatePhoneDto)
+  phones: Phone[];
 
   @IsNotEmpty()
-  @IsEmail()
-  std_trd_choice: string;
+  @IsArray()
+  @ArrayMinSize(1)
+  @ValidateNested({ each: true })
+  @Type(() => CreateCourseDto)
+  courses: Course[];
 }
